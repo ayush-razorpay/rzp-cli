@@ -15,12 +15,12 @@ mynewcli
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g mynewcli
-$ mynewcli COMMAND
+$ npm install -g rzp-cli
+$ rzp-cli COMMAND
 running command...
-$ mynewcli (-v|--version|version)
-mynewcli/0.0.0 darwin-x64 node-v14.16.0
-$ mynewcli --help [COMMAND]
+$ rzp-cli (-v|--version|version)
+rzp-cli/0.0.0 darwin-x64 node-v14.16.0
+$ rzp-cli --help [COMMAND]
 USAGE
   $ mynewcli COMMAND
 ...
