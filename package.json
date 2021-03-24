@@ -1,9 +1,9 @@
 {
-  "name": "mynewcli",
-  "version": "0.0.0",
+  "name": "rzp-cli",
+  "version": "1.0.0",
   "author": "Ayush Vipul @ayush-razorpay",
   "bin": {
-    "mynewcli": "./bin/run"
+    "RzpCli": "./bin/run"
   },
   "bugs": "https://github.com/ayush-razorpay/mynewcli/issues",
   "devDependencies": {
