@@ -1,4 +1,4 @@
-mynewcli
+rzp-cli
 ========
 
 
