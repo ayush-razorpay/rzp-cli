@@ -1,0 +1,10 @@
+{
+	"localtunnel": {
+		"host": "https://localtunnel.me",
+		"subdomain": "rzp-x1w12erp-grawze4pzyg8qq"
+	},
+    "app":{
+        "port":8881
+    }
+
+}

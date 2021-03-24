@@ -1,10 +1,9 @@
 import {Command, flags} from '@oclif/command'
-import { SimpleServer } from './server';
-//import SimpleServer from 'SimpleServer';
+import { LocaltunnelClient } from './lib/localTunnelClient';
+import { WebhookListnerService } from './lib/WebhookListnerService';
 
-const localtunnel = require('localtunnel');
 
-class Mynewcli extends Command {
+class RzpCli extends Command {
   static description = 'Heath checl'
 
   static flags = {
@@ -21,36 +20,18 @@ class Mynewcli extends Command {
 
   async run() {
 
-(async () => {
-  const tunnel = await localtunnel({subdomain:'ayush-------12345678765432', port: 3000 });
+      const {args, flags} = this.parse(RzpCli)
 
-  // the assigned public url for your tunnel
-  // i.e. https://abcdefgjhij.localtunnel.me
-  tunnel.url;
-  this.log(tunnel.url)
+    let webHookService = new WebhookListnerService();    webHookService.start();
 
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
+    let lt = new LocaltunnelClient();                    lt.startTunnel();
 
-
-
-
-    const {args, flags} = this.parse(Mynewcli)
-    console.log(args);
-
-    console.log(flags);
-
-    let s = new SimpleServer();
-    s.start();
-    //?? null safety
     const name = flags.name ?? 'world'
-    this.log(`hello ${name} from ./src/index.ts`)
+    //this.log(`hello ${name} from ./src/index.ts`)
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`)
     }
   }
 }
 
-export = Mynewcli
+export = RzpCli
