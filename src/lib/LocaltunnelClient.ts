@@ -23,7 +23,7 @@ var req = unirest('POST', 'https://floating-woodland-30144.herokuapp.com/Subscri
     'Content-Type': 'application/json'
   })
   .send(JSON.stringify({
-    "mid": "BFQ7uQEaa7j2z7",
+    "mid": Config.getMid(),
     "url":  url
   }))
   .end(function (res) { 
