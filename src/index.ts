@@ -4,7 +4,7 @@ import { WebhookListnerService } from './lib/WebhookListnerService';
 
 
 class RzpCli extends Command {
-  static description = 'Heath checl'
+  static description = 'Webhook Util'
 
   static flags = {
     // add --version flag to show CLI version
@@ -16,14 +16,14 @@ class RzpCli extends Command {
     force: flags.boolean({char: 'f'}),
   }
 
-  static args = [{name: 'file'}]
+  static args = [{name: 'arg1'}]
 
   async run() {
 
-      const {args, flags} = this.parse(RzpCli)
+    const {args, flags} = this.parse(RzpCli)
 
+    console.log(args)
     let webHookService = new WebhookListnerService();    webHookService.start();
-
     let lt = new LocaltunnelClient();                    lt.startTunnel();
 
     const name = flags.name ?? 'world'
