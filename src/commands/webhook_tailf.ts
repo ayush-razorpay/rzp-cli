@@ -18,9 +18,6 @@ export default class webhook_tailf extends Command {
   async run() {
     const {args, flags} = this.parse(webhook_tailf)
 
-    console.log(args);
-    console.log(flags);
-
    var service : RzpCliService = new WebhookListnerimpl();
 
    service.init();

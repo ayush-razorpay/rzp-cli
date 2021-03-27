@@ -31,7 +31,6 @@ export class WebhookListnerimpl implements RzpCliService {
             //todo: add logs here
           });
         })();
-
   }
 
   /**
@@ -103,12 +102,8 @@ console.log("------url",url);
    */
 
   public static setAssignedUrl(url: string) {
-
     WebhookListnerimpl.assignedUrl = url;
-
-    log.info("--0--------")
   }
-
 
 }
 
