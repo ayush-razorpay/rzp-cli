@@ -4,7 +4,8 @@
 		"subdomain": "rzplt-"
 	},
     "app":{
-        "port":8881
+      "info":"change this port to re-direct this to other local server",
+	"port":8881
     },
 	"razorpayConf":{
 		"mid":2
@@ -12,6 +13,19 @@
 	},
 	"apiRouter":{
 		"host":"https://floating-woodland-30144.herokuapp.com/Subscription"
+	},
+	"samplePayloads":{
+		
+		"order":{
+			"paid":{
+				"netbanking":"./sample-payloads/order.paid-netbanking.json",
+				"card":"./sample-payloads/order.paid-card.json",
+				"upi":"./sample-payloads/order.paid-upi.json",
+				"wallets":"./sample-payloads/order.paid-wallets.json"
+			}
+		}
+
+
 	}
 
 }

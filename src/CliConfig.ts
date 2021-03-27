@@ -9,6 +9,8 @@ export class CliConfig{
     public static getAppPort():number{return jsonConf.app.port;}
     public static getMid():string{return jsonConf.razorpayConf.mid;}
     public static getApiRouterConfig(){return jsonConf.apiRouter;}
+
+    public static getSamplePayloadPaths(){return jsonConf.samplePayloads;};
     
 
 }
