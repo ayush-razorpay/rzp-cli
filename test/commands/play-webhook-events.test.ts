@@ -1,18 +1,16 @@
 import {expect, test} from '@oclif/test'
 
-import cmd = require('../src')
-
-describe('mynewcli', () => {
+describe('play-webhook-events', () => {
   test
   .stdout()
-  .do(() => cmd.run([]))
+  .command(['play-webhook-events'])
   .it('runs hello', ctx => {
     expect(ctx.stdout).to.contain('hello world')
   })
 
   test
   .stdout()
-  .do(() => cmd.run(['--name', 'jeff']))
+  .command(['play-webhook-events', '--name', 'jeff'])
   .it('runs hello --name jeff', ctx => {
     expect(ctx.stdout).to.contain('hello jeff')
   })

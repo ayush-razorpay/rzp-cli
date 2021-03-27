@@ -1,10 +1,17 @@
 {
 	"localtunnel": {
 		"host": "https://localtunnel.me",
-		"subdomain": "rzp-x1w12erp-grawze4pzyg8qq"
+		"subdomain": "rzplt-"
 	},
     "app":{
         "port":8881
-    }
+    },
+	"razorpayConf":{
+		"mid":2
+
+	},
+	"apiRouter":{
+		"host":"https://floating-woodland-30144.herokuapp.com/Subscription"
+	}
 
 }
