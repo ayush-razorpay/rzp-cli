@@ -2,7 +2,7 @@ import { readFile } from "node:fs";
 import { CliConfig } from "../../../../CliConfig";
 const jp = require('jsonpath');
 const fs = require('fs')
-var unirest = require('unirest');
+
 
 export class WebhookEventPlayService{
 
@@ -39,17 +39,7 @@ export class WebhookEventPlayService{
           
             let appHostUrl = 'http://localhost:'+CliConfig.getAppPort()+'/webhook-listner';
 
-            var req = unirest('POST', appHostUrl)
-  .headers({
-    'Content-Type': 'application/json'
-  })
-  .send(data)
-  .end(function (res:any) { 
-    if (res.error) throw new Error(res.error); 
-   //console.log(res.raw_body);
-  });
-
-
+            postToLocalUrl(appHostUrl,data);
 
           })
         }
