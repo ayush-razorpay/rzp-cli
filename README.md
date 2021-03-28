@@ -28,23 +28,19 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`rzp-cli get [FILE]`](#rzp-cli-get-file)
+* [`rzp-cli get [OBJECTID]`](#rzp-cli-get-objectid)
 * [`rzp-cli help [COMMAND]`](#rzp-cli-help-command)
+* [`rzp-cli post [FILE]`](#rzp-cli-post-file)
 * [`rzp-cli replay_webhook_events [QUERY]`](#rzp-cli-replay_webhook_events-query)
 * [`rzp-cli webhook_tailf`](#rzp-cli-webhook_tailf)
 
-## `rzp-cli get [FILE]`
+## `rzp-cli get [OBJECTID]`
 
-describe the command here
+Get Razorpay object id
 
 ```
 USAGE
-  $ rzp-cli get [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  $ rzp-cli get [OBJECTID]
 ```
 
 _See code: [src/commands/get.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/get.ts)_
@@ -65,6 +61,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `rzp-cli post [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ rzp-cli post [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/post.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/post.ts)_
 
 ## `rzp-cli replay_webhook_events [QUERY]`
 
