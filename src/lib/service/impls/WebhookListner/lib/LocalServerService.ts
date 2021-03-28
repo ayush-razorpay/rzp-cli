@@ -15,8 +15,9 @@ export class LocalServerService{
     })
 
     let count = 1;
-    this.app.post('/webhook-listner', (req:any, res:any) => {
+    this.app.post('/webhook-listner', async (req:any, res:any) => {
       let x = JSON.stringify(req.body, null, " ");
+      await cli.wait()
       cli.info(x);
       res.send(req.body)
     })

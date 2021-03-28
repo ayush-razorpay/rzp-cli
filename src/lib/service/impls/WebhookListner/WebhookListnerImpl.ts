@@ -5,6 +5,7 @@ const localtunnel = require('localtunnel');
 const log4js = require("log4js");
 const log = log4js.getLogger();
 var unirest = require('unirest');
+import cli from 'cli-ux'
 
 export class WebhookListnerimpl implements RzpCliService {
 
@@ -43,8 +44,6 @@ export class WebhookListnerimpl implements RzpCliService {
 
     let url = WebhookListnerimpl.assignedUrl + "/webhook-listner";
 
-console.log("------url",url);
-
     var req = unirest('POST', (CliConfig.getApiRouterConfig().host)).headers({
       'Content-Type': 'application/json'
     })
@@ -59,6 +58,7 @@ console.log("------url",url);
         throw new Error(res.error);
         }
         console.log("Registered with apiRouterService", res.raw_body);
+        cli.action.start("Listening webhook posts");
       });
 
   }
