@@ -3,9 +3,6 @@ import { string } from "@oclif/command/lib/flags";
 import cli from "cli-ux";
 import { CliConfig } from "../CliConfig";
 
-/**
- * @deprecated The class should not be used
- */
 export default class Get extends Command {
   static description = "Get Razorpay object id";
   rzp = CliConfig.getRazorpay();
@@ -46,22 +43,32 @@ export default class Get extends Command {
     }),
   };
 
+  static args = [{name: 'recordType'}]
+
   async run() {
     const { args, flags } = this.parse(Get);
 
     if (flags.id) {
       let objId = flags.id;
-      if (objId.startsWith("pay_")) this.getchRecordUisngId(objId);
+      let rzpInstace = this.rzpInstanceFactory(objId);
+      if (rzpInstace) this.getchRecordUisngId(objId,rzpInstace);
       else cli.log("Not a valid rzp ObjectId");
     } else {
-      this.getRecords(flags);
+
+      if(! args.recordType)
+          cli.error("Please pass a valid record type . pay")
+
+          let rzpInstace = this.rzpInstanceFactory(args.recordType);
+          if (rzpInstace) this.getRecords(flags,rzpInstace);
+          else cli.log("Not a valid rzp Record Type");
+      
     }
   }
 
-  private getchRecordUisngId(objId: string) {
+  private getchRecordUisngId(objId: string,rzpInstace:any) {
     cli.action.start("Get " + objId, "Fetching", { stdout: true });
-    this.rzp.payments
-      .fetch("pay_GrGULlzspp2DSw")
+    rzpInstace
+      .fetch(objId)
       .then((data: any) => {
         cli.log(JSON.stringify(data, null, 2));
       })
@@ -70,7 +77,7 @@ export default class Get extends Command {
       });
   }
 
-  private getRecords(flags: any) {
+  private getRecords(flags: any,rzpInstace:any) {
     let flagsOverride = JSON.parse(JSON.stringify(flags));
     if (flags.expand) flagsOverride.expand = flags.expand.split(",");
     cli.action.start(
@@ -78,9 +85,8 @@ export default class Get extends Command {
       "Fetching",
       { stdout: true }
     );
-console.log("-----", this.rzp.payments)
 
-    this.rzp.payments
+    rzpInstace
       .all(flagsOverride)
       .then((response: any) => {
         cli.log(JSON.stringify(response, null, 2));
@@ -89,4 +95,34 @@ console.log("-----", this.rzp.payments)
         cli.error(error);
       });
   }
+
+  private rzpInstanceFactory(var1:string):any{
+
+  let toreturn ;
+
+  if(var1 == "payments" || var1.startsWith("pay"))
+  toreturn =  this.rzp.payments;
+  
+  else if(var1 == "invoices" || var1.startsWith("inv"))
+  toreturn =  this.rzp.invoices;
+
+  else if(var1 == "orders" || var1.startsWith("order"))
+  toreturn =  this.rzp.orders;
+
+  else if(var1 == "refunds" || var1 == "refund"  || var1.startsWith("rfnd"))
+  toreturn =  this.rzp.refunds;
+
+  else if(var1 == "customers" || var1.startsWith("cust"))
+  toreturn =  this.rzp.customers;
+
+  else if(var1 == "token" || var1.startsWith("token"))
+  toreturn =  this.rzp.fetchToken;
+
+  if(!toreturn)  throw new Error("Invalid argument : "+var1+" not a suppported operatrion");
+
+  return toreturn;
+
+
+  }
+
 }
