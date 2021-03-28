@@ -1,5 +1,5 @@
-import { readFile } from "node:fs";
 import { CliConfig } from "../../../../CliConfig";
+import { postToLocalUrl } from "../../../CommonUtils";
 const jp = require('jsonpath');
 const fs = require('fs')
 
@@ -35,7 +35,8 @@ export class WebhookEventPlayService{
               console.error(err)
               throw err;
             }
-            console.log("###   Replaying payload : \n",JSON.stringify(JSON.parse(data),null,2));
+            // console.log("###   Replaying payload : \n",JSON.stringify(JSON.parse(data),null,2));
+            console.log("###   Replaying payload : ",path);
           
             let appHostUrl = 'http://localhost:'+CliConfig.getAppPort()+'/webhook-listner';
 

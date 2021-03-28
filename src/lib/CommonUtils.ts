@@ -2,7 +2,7 @@
 var unirest = require('unirest');
 
 
-function postToLocalUrl(url:string,json:string){
+export function postToLocalUrl(url:string,json:string){
     var req = unirest('POST', url)
     .headers({
       'Content-Type': 'application/json'
