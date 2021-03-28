@@ -1,5 +1,5 @@
 var jsonConf = require('../conf.json')
-
+const Razorpay = require('razorpay')
 export class CliConfig{
   
     public static webhookListnerUri = "/webhook-listner";
@@ -11,6 +11,7 @@ export class CliConfig{
     public static getApiRouterConfig(){return jsonConf.apiRouter;}
 
     public static getSamplePayloadPaths(){return jsonConf.samplePayloads;};
+    public static getRazorpay(){return new Razorpay(jsonConf.razorpayConf.apiKey);};
     
 
 }

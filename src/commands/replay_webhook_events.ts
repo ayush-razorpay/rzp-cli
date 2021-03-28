@@ -22,11 +22,6 @@ export default class ReplayWebhookEvents extends Command {
 
     let service = new WebhookEventPlayService();
     service.replayEvent(args.query);
-    //const name = flags.name ?? 'world'
-   // console.log(args.query);
-    //this.log(`hello ${name} from /Users/ayush.vipul/Desktop/workspace/rzp-cli/src/commands/replay_webhook_events.ts`)
-    // if (args.file && flags.force) {
-    //   this.log(`you input --force and --file: ${args.file}`)
-    // }
+
   }
 }

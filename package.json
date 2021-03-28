@@ -18,7 +18,7 @@
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
     "globby": "^10.0.2",
-    "mocha": "^5.2.0",
+    "mocha": "^8.3.2",
     "nyc": "^14.1.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.9"
@@ -42,7 +42,8 @@
     "commands": "./lib/commands",
     "bin": "rzp-cli",
     "plugins": [
-      "@oclif/plugin-help"
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
     ]
   },
   "repository": "ayush-razorpay/rzp-cli",
@@ -57,11 +58,16 @@
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
+    "@oclif/plugin-autocomplete": "^0.3.0",
     "@oclif/plugin-help": "^3.2.2",
+    "@oclif/plugin-not-found": "^1.2.4",
+    "cli-ux": "^5.5.1",
     "jsonpath": "^1.1.0",
     "localtunnel": "^2.0.1",
     "log4js": "^6.3.0",
+    "razorpay": "^2.0.6",
     "tslib": "^1.14.1",
-    "unirest": "^0.6.0"
+    "unirest": "^0.6.0",
+    "yarn": "^1.22.10"
   }
 }
