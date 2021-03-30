@@ -21,7 +21,7 @@ With the Rzp-Cli CLI, you can:
 
 And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
-[Demo](https://ayush-razorpay.github.io/rzp-cli/demo1.gif)
+# Please check this - [Demo](https://ayush-razorpay.github.io/rzp-cli/demo1.gif)
 
 <!-- toc -->
 * [Usage](#usage)
