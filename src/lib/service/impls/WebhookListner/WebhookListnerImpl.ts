@@ -42,13 +42,15 @@ export class WebhookListnerimpl implements RzpCliService {
   start(): void {
     this.lts.start();
 
+console.log("--------",CliConfig.getMid());
+
     let url = WebhookListnerimpl.assignedUrl + "/webhook-listner";
 
     var req = unirest('POST', (CliConfig.getApiRouterConfig().host)).headers({
       'Content-Type': 'application/json'
     })
       .send(JSON.stringify({
-        "mid": CliConfig.getMid(),
+        "mid": "acc_GRbBhTpWL3JxTW",
         "url": url
       }))
       .end(function (res: any) {
@@ -57,8 +59,8 @@ export class WebhookListnerimpl implements RzpCliService {
         console.log("failed to register with apiRouterService", res.raw_body);
         throw new Error(res.error);
         }
-        console.log("Registered with apiRouterService", res.raw_body);
-        cli.action.start("Listening webhook posts");
+        console.log("Registered with apiRouterService", res.raw_body+"\n");
+        cli.action.start("Listening to webhook posts on localhost:8881");
       });
 
   }
