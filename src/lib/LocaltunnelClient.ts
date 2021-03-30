@@ -26,7 +26,7 @@ var req = unirest('POST', 'https://floating-woodland-30144.herokuapp.com/Subscri
     "mid": Config.getMid(),
     "url":  url
   }))
-  .end(function (res) { 
+  .end(function (res:any) { 
     if (res.error) throw new Error(res.error); 
     console.log(res.raw_body);
   });
