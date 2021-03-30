@@ -2,6 +2,7 @@ rzp-cli
 =======
 
 Official Razorpay Integrations Cli
+
 [![rzp-cli](https://img.shields.io/static/v1?label=cli&message=razorpay&color=%3CCOLOR%3E)](http://razorpay.com/)
 [![Version](https://img.shields.io/npm/v/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
@@ -10,7 +11,7 @@ Official Razorpay Integrations Cli
 
 
 
-# The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal in your machine.
+## The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal in your machine.
 
 With the Rzp-Cli CLI, you can:
 
