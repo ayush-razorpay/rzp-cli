@@ -2,26 +2,24 @@ rzp-cli
 =======
 
 Official Razorpay Integrations Cli
-
-
-The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal in your machine.
-
-With the Rzp-Cli CLI, you can:
-
-Securely test webhooks without relying on third-party tunneling software and added hassel of setting them up.
-
-Trigger new or Replay webhook events to easily test your integration.
-
-Create, retrieve, update, and delete API objects directly from the cli.
-
-And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
-
-
-
 [![rzp-cli](https://img.shields.io/static/v1?label=cli&message=razorpay&color=%3CCOLOR%3E)](http://razorpay.com/)
 [![Version](https://img.shields.io/npm/v/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
 [![License](https://img.shields.io/npm/l/rzp-cli.svg)](https://github.com/ayush-razorpay/rzp-cli/blob/master/package.json)
+
+
+
+
+# The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal in your machine.
+
+With the Rzp-Cli CLI, you can:
+
+* Securely test webhooks without relying on third-party tunneling software and added hassel of setting them up.
+* Trigger new or Replay webhook events to easily test your integration.
+* Create, retrieve, update, and delete API objects directly from the cli.
+* And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
+
+
 
 <!-- toc -->
 * [Usage](#usage)
