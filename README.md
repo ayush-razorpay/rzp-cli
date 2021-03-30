@@ -109,3 +109,8 @@ OPTIONS
 
 _See code: [src/commands/webhook_tailf.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/webhook_tailf.ts)_
 <!-- commandsstop -->
+
+
+# Motivation
+https://github.com/PaystackOSS/paystack-cli
+https://github.com/stripe/stripe-cli
