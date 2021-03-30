@@ -11,7 +11,7 @@ Official Razorpay Integrations Cli
 
 
 
-## The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal in your machine.
+## The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal.
 
 With the Rzp-Cli CLI, you can:
 
