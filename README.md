@@ -3,7 +3,7 @@ rzp-cli
 
 Official Razorpay Integrations Cli
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![rzp-cli](https://img.shields.io/static/v1?label=cli&message=razorpay&color=%3CCOLOR%3E)](http://razorpay.com/)
 [![Version](https://img.shields.io/npm/v/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
 [![License](https://img.shields.io/npm/l/rzp-cli.svg)](https://github.com/ayush-razorpay/rzp-cli/blob/master/package.json)
