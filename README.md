@@ -1,4 +1,4 @@
-rzp-cli
+rzp-cli (Official Razorpay Integrations Cli)
 =======
 
 rzp integrations cli
