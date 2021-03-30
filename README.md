@@ -21,8 +21,7 @@ With the Rzp-Cli CLI, you can:
 
 And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
-![alt text](https://user-images.githubusercontent.com/78246948/113035787-258a6d80-91b1-11eb-91ad-2ed2bd299601.mov)
-
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://user-images.githubusercontent.com/78246948/113035787-258a6d80-91b1-11eb-91ad-2ed2bd299601.mov)
 
 <!-- toc -->
 * [Usage](#usage)
