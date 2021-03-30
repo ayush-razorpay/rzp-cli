@@ -1,7 +1,7 @@
-rzp-cli (Official Razorpay Integrations Cli)
+rzp-cli 
 =======
 
-rzp integrations cli
+Official Razorpay Integrations Cli
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/rzp-cli.svg)](https://npmjs.org/package/rzp-cli)
