@@ -18,7 +18,9 @@ With the Rzp-Cli CLI, you can:
 * Securely test webhooks without relying on third-party tunneling software and added hassel of setting them up.
 * Trigger new or Replay webhook events to easily test your integration.
 * Create, retrieve, update, and delete API objects directly from the cli.
-* And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
+
+
+And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
 
 
