@@ -8,8 +8,11 @@
 	"port":8881
     },
 	"razorpayConf":{
-		"mid":2
-
+		"mid":2,
+		"apiKey":{
+			"key_id": "rzp_test_oJPbj9rC1rDGAQ",
+			"key_secret": "uTYMtv9W0t6RalA0WTvO4WaE"
+		  }
 	},
 	"apiRouter":{
 		"host":"https://floating-woodland-30144.herokuapp.com/Subscription"

@@ -1,5 +1,5 @@
 import { CliConfig } from "../../../../../CliConfig";
-
+import cli from 'cli-ux'
 const bodyparser = require('body-parser')
 export class LocalServerService{
 
@@ -15,11 +15,10 @@ export class LocalServerService{
     })
 
     let count = 1;
-    this.app.post('/webhook-listner', (req:any, res:any) => {
+    this.app.post('/webhook-listner', async (req:any, res:any) => {
       let x = JSON.stringify(req.body, null, " ");
-      console.log("-------Starts----" + count + "--------------" + (JSON.parse(x).event) + "--------------------------");
-      console.log(x);
-      console.log("--------Ends-------" + (count++) + "--------" + (JSON.parse(x).event) + "--------------------------");
+      await cli.wait()
+      cli.info(x);
       res.send(req.body)
     })
 
