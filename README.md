@@ -23,6 +23,8 @@ And of course the Rzp-Cli is open source with a public repository on GitHub. Con
 
 # Please check this - [Demo](https://ayush-razorpay.github.io/rzp-cli/demo1.gif)
 
+![vo__fq](https://i.makeagif.com/media/3-31-2021/vo__fq.gif)
+
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
