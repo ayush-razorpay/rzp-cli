@@ -1,14 +1,13 @@
 {
 	"localtunnel": {
-		"host": "https://localtunnel.me",
-		"subdomain": "rzplt-"
+		"host": "https://localtunnel.me"
 	},
     "app":{
       "info":"change this port to re-direct this to other local server",
 	"port":8881
     },
 	"razorpayConf":{
-		"mid":2,
+		"mid":"GRbBhTpWL3JxTW",
 		"apiKey":{
 			"key_id": "rzp_test_oJPbj9rC1rDGAQ",
 			"key_secret": "uTYMtv9W0t6RalA0WTvO4WaE"

@@ -13,7 +13,7 @@ export default class webhook_tailf extends Command {
 
   async run() {
     
-    cli.action.start("Configuring your cli with remote server");
+    cli.action.start("Configuring your cli with remote server. Not ready yet");
     const {args, flags} = this.parse(webhook_tailf)
 
     var service : RzpCliService = new WebhookListnerimpl();

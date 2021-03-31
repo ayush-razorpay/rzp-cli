@@ -11,20 +11,19 @@ export class LocalServerService{
   public start() {
     this.app.use(require('body-parser').json());     
     this.app.get('/health', (req:any, res:any) => {
-      res.send('Serive up and running !')
+      res.send('Server up and running !')
     })
 
-    let count = 1;
     this.app.post('/webhook-listner', async (req:any, res:any) => {
       let x = JSON.stringify(req.body, null, " ");
-      await cli.wait()
+      // await cli.wait()
       cli.info(x);
       res.send(req.body)
     })
 
-    this.app.listen(this.port, () => {
-      console.log(`Webhooks listening at http://localhost:${this.port}`)
-    })
+    this.app.listen(this.port, async () => {
+      cli.action.start(`Webhooks listening at http://localhost:${this.port}`+' Not ready yet')
+   })
   }
 
   public stop(){
