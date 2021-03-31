@@ -15,7 +15,7 @@ Official Razorpay Integrations Cli
 
 ## The Rzp-Cli helps you build, test, and manage your Razorpay integration right from the terminal.
 
-With the Rzp-Cli CLI, you can:
+With the Rzp-Cli, you can:
 
 * Securely test webhooks without relying on third-party tunneling software and added hassel of setting them up.
 * Trigger new or Replay webhook events to easily test your integration.
