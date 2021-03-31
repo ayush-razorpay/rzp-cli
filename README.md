@@ -1,4 +1,5 @@
 
+
 rzp-cli 
 =======
 
@@ -34,6 +35,10 @@ And of course the Rzp-Cli is open source with a public repository on GitHub. Con
 ## Get and Post Razopray Bussiness Objects from cli
 
 ![0d463c22aa6613c49955cbb2fad7cd1755059a1e](https://user-images.githubusercontent.com/78246948/113151917-355a8e00-9253-11eb-83e6-8d3147c67197.gif)
+
+
+#### system architecture
+<img width="200" alt="System design" src="https://user-images.githubusercontent.com/78246948/113157310-67baba00-9258-11eb-8f58-4f31e30d9b67.png">
 
 <!-- toc -->
 * [Usage](#usage)
