@@ -17,11 +17,12 @@ Official Razorpay Integrations Cli
 
 With the Rzp-Cli, you can:
 
-* Securely test webhooks without relying on third-party tunneling software and added hassel of setting them up.
+* Securely test webhooks without relying on third-party tunneling software and also without added hassel of setting them up.
 * Trigger new or Replay webhook events to easily test your integration.
 * Create, retrieve, update, and delete API objects directly from the cli.
 
-And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
+And ofcourse the Rzp-Cli is open source with a public repository on GitHub. 
+Contributions, features, sample apps from developers are encouraged.
 
 ## Webhook events from Razorpay to your system's terminal.
 
