@@ -33,7 +33,7 @@ And of course the Rzp-Cli is open source with a public repository on GitHub. Con
 
 ## Get Razopray Bussiness Objects from cli
 
-![gif](https://user-images.githubusercontent.com/78246948/113151249-85852080-9252-11eb-9b25-cb24defdd770.gif)
+![d9a18883948abf281cb8200307422759e6b38a92](https://user-images.githubusercontent.com/78246948/113151712-fd534b00-9252-11eb-9924-dbb242129f81.gif)
 
 <!-- toc -->
 * [Usage](#usage)
