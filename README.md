@@ -22,11 +22,7 @@ With the Rzp-Cli CLI, you can:
 
 And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
-[![demo]](https://streamable.com/j5knt9)
-
-
-
-
+![17c2e2cf49d172005f17b075364ab7cb666b0391](https://user-images.githubusercontent.com/78246948/113145619-4522a400-924c-11eb-8c9b-5a48f153ac51.gif)
 
 <!-- toc -->
 * [Usage](#usage)
