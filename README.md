@@ -22,6 +22,8 @@ With the Rzp-Cli CLI, you can:
 And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
 
+[![Demo Doccou alpha](http://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+
 [![Demo CountPages alpha](https://media.giphy.com/media/BpTG3iWYi7YnYQV9NG/giphy.gif)](https://giphy.com/gifs/BpTG3iWYi7YnYQV9NG/html5)
 
 <!-- toc -->
