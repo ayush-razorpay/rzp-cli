@@ -22,7 +22,11 @@ With the Rzp-Cli CLI, you can:
 
 And of course the Rzp-Cli is open source with a public repository on GitHub. Contributions, features, sample apps from developers are encouraged.
 
+## Webhook events from Razorpay to your system's terminal.
+
 ![17c2e2cf49d172005f17b075364ab7cb666b0391](https://user-images.githubusercontent.com/78246948/113145619-4522a400-924c-11eb-8c9b-5a48f153ac51.gif)
+
+## Replay webhook events locally. 
 
 ![replay](https://user-images.githubusercontent.com/78246948/113146920-de9e8580-924d-11eb-8c95-7e86287f77c1.gif)
 
