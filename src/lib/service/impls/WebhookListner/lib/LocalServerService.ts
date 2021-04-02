@@ -1,5 +1,8 @@
 import { CliConfig } from "../../../../../CliConfig";
 import cli from 'cli-ux'
+import { gettimeStamp } from "../../../../CommonUtils";
+const jp = require('jsonpath');
+
 const bodyparser = require('body-parser')
 export class LocalServerService{
 
@@ -15,9 +18,9 @@ export class LocalServerService{
     })
 
     this.app.post('/webhook-listner', async (req:any, res:any) => {
-      let x = JSON.stringify(req.body, null, " ");
-      // await cli.wait()
-      cli.info(x);
+      let x = req.body;
+     
+      cli.info(gettimeStamp() + '-->  [ event : ' + x.event + ', id : ' + (jp.query(x, '$..id'))[0]+' ]');
       res.send(req.body)
     })
 
