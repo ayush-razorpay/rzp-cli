@@ -19,6 +19,9 @@ export default class WebhookListen extends Command {
   }
 
  
+//get a local tunnel url
+//register the url with apiCliRouter
+//start litening and forwarding request 
 
   async run() {
     const {args, flags} = this.parse(WebhookListen)
@@ -31,10 +34,11 @@ export default class WebhookListen extends Command {
       cli.error('Not a valid app url :'+url);
       }
 
-    
-
-
     this.log(`hello ${url} from /Users/ayush.vipul/Desktop/workspace/rzp-cli/src/commands/webhook_listen.ts`)
 
   }
+
+
+
+
 }
