@@ -28,22 +28,26 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`rzp-cli get [OBJECTID]`](#rzp-cli-get-objectid)
+* [`rzp-cli Webhook_listen1`](#rzp-cli-webhook_listen1)
 * [`rzp-cli help [COMMAND]`](#rzp-cli-help-command)
-* [`rzp-cli post [FILE]`](#rzp-cli-post-file)
+* [`rzp-cli login`](#rzp-cli-login)
 * [`rzp-cli replay_webhook_events [QUERY]`](#rzp-cli-replay_webhook_events-query)
-* [`rzp-cli webhook_tailf`](#rzp-cli-webhook_tailf)
+* [`rzp-cli webhook_listen [FILE]`](#rzp-cli-webhook_listen-file)
 
-## `rzp-cli get [OBJECTID]`
+## `rzp-cli Webhook_listen1`
 
-Get Razorpay object id
+listen to webhook post calls
 
 ```
 USAGE
-  $ rzp-cli get [OBJECTID]
+  $ rzp-cli Webhook_listen1
+
+OPTIONS
+  -h, --help       show CLI help
+  -n, --name=name  name to print
 ```
 
-_See code: [src/commands/get.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/get.ts)_
+_See code: [src/commands/Webhook_listen1.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/Webhook_listen1.ts)_
 
 ## `rzp-cli help [COMMAND]`
 
@@ -62,21 +66,19 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `rzp-cli post [FILE]`
+## `rzp-cli login`
 
-describe the command here
+Login to Razorpay using key Id & secret
 
 ```
 USAGE
-  $ rzp-cli post [FILE]
+  $ rzp-cli login
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
-_See code: [src/commands/post.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/post.ts)_
+_See code: [src/commands/login.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/login.ts)_
 
 ## `rzp-cli replay_webhook_events [QUERY]`
 
@@ -94,18 +96,19 @@ OPTIONS
 
 _See code: [src/commands/replay_webhook_events.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/replay_webhook_events.ts)_
 
-## `rzp-cli webhook_tailf`
+## `rzp-cli webhook_listen [FILE]`
 
-listen to webhook post calls
+describe the command here
 
 ```
 USAGE
-  $ rzp-cli webhook_tailf
+  $ rzp-cli webhook_listen [FILE]
 
 OPTIONS
+  -f, --force
   -h, --help       show CLI help
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/webhook_tailf.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/webhook_tailf.ts)_
+_See code: [src/commands/webhook_listen.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/webhook_listen.ts)_
 <!-- commandsstop -->

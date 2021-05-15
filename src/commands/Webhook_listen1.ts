@@ -3,7 +3,7 @@ import { WebhookListnerimpl } from '../lib/service/impls/WebhookListner/WebhookL
 import { RzpCliService } from '../lib/service/RzpCliService';
 import cli from "cli-ux";
 
-export default class webhook_tailf extends Command {
+export default class Webhook_listen extends Command {
   static description = 'listen to webhook post calls'
 
   static flags = {
@@ -14,7 +14,7 @@ export default class webhook_tailf extends Command {
   async run() {
     
     cli.action.start("Configuring your cli with remote server. Not ready yet");
-    const {args, flags} = this.parse(webhook_tailf)
+    const {args, flags} = this.parse(Webhook_listen)
 
     var service : RzpCliService = new WebhookListnerimpl();
 
