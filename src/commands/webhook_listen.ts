@@ -18,7 +18,7 @@ export default class WebhookListen extends Command {
 
   }
 
- 
+//logs for keys and validate 
 //get a local tunnel url
 //register the url with apiCliRouter
 //start litening and forwarding request 

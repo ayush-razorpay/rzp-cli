@@ -1,9 +1,9 @@
-import {Command, flags} from '@oclif/command'
+import { Command, flags } from "@oclif/command";
 
 import cli from "cli-ux";
-var unirest = require("unirest");
-const fs = require('fs')
 
+import { RzpAuthConfigModel } from "../lib/login/RzpAuthConfigModel";
+import { RzpApiAuthUtil } from "../lib/RzpApiAuthUtil";
 
 export default class Login extends Command {
   static description = "Login to Razorpay using key Id & secret";
@@ -11,6 +11,8 @@ export default class Login extends Command {
   static flags = {
     help: flags.help({ char: "h" }),
   };
+
+  rzpApiAuthUtil = new RzpApiAuthUtil(this.config.configDir);
 
   /**
    * get user key & secret
@@ -30,60 +32,32 @@ export default class Login extends Command {
       type: "mask",
     });
 
-    //this.log(`You entered: ${key}, ${secret}`)
-
     cli.action.start("Validating credentials");
-    await this.validateKeys(key, secret);
-    cli.action.start("Credentails validated successfully. Creating config file");
-
-   let toSaveKeys = new RzpConfig(key,secret);
-   this.createConfigFile(toSaveKeys);
-
-  }
-
-async validateKeys(key: string, secret: string) {
-    let auth = "Basic " + Buffer.from(`${key}:${secret}`).toString("base64");
-
-    let req = unirest("GET", "https://api.razorpay.com/v1/payments/")
-      .headers({
-        Authorization: auth,
+    await RzpApiAuthUtil.validateKeys(key, secret)
+      .then(function () {
+        cli.action.stop(
+          "Credentails validated successfully"
+        );
       })
-      .send("")
-      .end(function (res: any) {
-        if (res.error) 
-        {
-          cli.action.stop('\nInvalid Credentials Entered \n\n' + 
-          'Need help generating api keys please visit - https://razorpay.com/docs/payment-gateway/dashboard-guide/settings/api-keys/')
-        }
+      .catch(function () {
+        cli.error(
+          "\nInvalid Credentials Entered \n\n" +
+            "Need help generating api keys please visit - https://razorpay.com/docs/payment-gateway/dashboard-guide/settings/api-keys/"
+        );
       });
-    return true;
-  }
 
-  async createConfigFile(data:RzpConfig){
- 
-   await fs.writeFile(this.config.configDir, JSON.stringify(data), (err: any) => {
-      if (err) {
-        cli.action.stop("\nFailed tp update config");
-        throw err;
-        
-      }else{
+    let toSaveKeys = new RzpAuthConfigModel(key, secret);
+
+
+    cli.action.start("Updating credentials in conf");
+    await this.rzpApiAuthUtil
+      .updateApiKeysToConfFile(toSaveKeys)
+      .then(function () {
         cli.action.stop("\nConf file updated successfully");
-      }
-      //file written successfully
-    })
-   
-  }
-  
-}
+      })
+      .catch(function (error) {
+        cli.error('\nFailed to write to conf file path \n\nerror:' + error);
+      });
 
-export class RzpConfig{
-
-  key :  string;
-  secret : string;
-
-  constructor(key:string,secret:string){
-    this.key=key;
-    this.secret=secret;
   }
 }
-
