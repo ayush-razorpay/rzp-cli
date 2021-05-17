@@ -42,4 +42,23 @@ export class RzpApiAuthUtil {
       });
     });
   }
+
+
+  async readApiKeysFromConfFile():Promise<any> {
+    return new Promise((resolve, reject) => {
+      fs.readFile(this.confFilePath, 'utf8' , (err:any, data:any) => {
+        if (err) {
+          reject(err);
+        }
+        if (data) {
+          resolve(JSON.parse(data));
+        
+        }
+        else{
+          reject('conf file is undefined');
+        }
+       
+      })
+    });
+  }
 }

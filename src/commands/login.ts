@@ -1,9 +1,10 @@
+
 import { Command, flags } from "@oclif/command";
 
 import cli from "cli-ux";
 
-import { RzpAuthConfigModel } from "../lib/login/RzpAuthConfigModel";
 import { RzpApiAuthUtil } from "../lib/RzpApiAuthUtil";
+import { RzpAuthConfigModel } from "../lib/RzpAuthConfigModel";
 
 export default class Login extends Command {
   static description = "Login to Razorpay using key Id & secret";
@@ -35,9 +36,7 @@ export default class Login extends Command {
     cli.action.start("Validating credentials");
     await RzpApiAuthUtil.validateKeys(key, secret)
       .then(function () {
-        cli.action.stop(
-          "Credentails validated successfully"
-        );
+        cli.action.stop("Credentails validated successfully");
       })
       .catch(function () {
         cli.error(
@@ -48,7 +47,6 @@ export default class Login extends Command {
 
     let toSaveKeys = new RzpAuthConfigModel(key, secret);
 
-
     cli.action.start("Updating credentials in conf");
     await this.rzpApiAuthUtil
       .updateApiKeysToConfFile(toSaveKeys)
@@ -56,8 +54,7 @@ export default class Login extends Command {
         cli.action.stop("\nConf file updated successfully");
       })
       .catch(function (error) {
-        cli.error('\nFailed to write to conf file path \n\nerror:' + error);
+        cli.error("\nFailed to write to conf file path \n\nerror:" + error);
       });
-
   }
 }
