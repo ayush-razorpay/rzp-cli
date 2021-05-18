@@ -3,6 +3,7 @@ import cli from "cli-ux";
 import { RzpAuthConfigModel } from "../lib/RzpAuthConfigModel";
 import { RzpApiAuthUtil } from "../lib/RzpApiAuthUtil";
 import { LocalServer } from "../lib/LocalServer";
+import { TunnelingService } from "../lib/TunnelingService";
 
 const validUrl = require("valid-url");
 
@@ -31,9 +32,6 @@ export default class WebhookListen extends Command {
 
     const url = flags.url;
 
-   
-
-
     if (!validUrl.isUri(url)) {
       this.error("Not a valid app url :" + url);
     }
@@ -61,16 +59,18 @@ export default class WebhookListen extends Command {
         );
       });
 
-
       //start a local server 
 
       let server = new LocalServer(8654,url);
 
-      await server.start();
+      await server.core();
 
+      let tunnel = new TunnelingService(8654);
+
+      await tunnel.start();
 
     this.log(
-      JSON.stringify(this.apiKeys)
+     JSON.stringify(this.apiKeys)
     );
   }
 
@@ -79,3 +79,4 @@ export default class WebhookListen extends Command {
 
 
 }
+

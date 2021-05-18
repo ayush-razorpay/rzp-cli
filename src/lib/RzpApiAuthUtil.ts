@@ -1,4 +1,4 @@
-import { RzpAuthConfigModel } from "./login/RzpAuthConfigModel";
+import { RzpAuthConfigModel } from "./RzpAuthConfigModel";
 
 var unirest = require("unirest");
 const fs = require("fs");
