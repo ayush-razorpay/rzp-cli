@@ -2,10 +2,11 @@ const jp = require("jsonpath");
 import cli from "cli-ux";
 import { gettimeStamp } from "./CommonUtils";
 const express = require("express");
-
-
 const bodyparser = require("body-parser");
+
 export class LocalServer {
+
+  public isSetup = false;
 
   port: number;
   forwardRequestUrl: string;
@@ -18,7 +19,6 @@ export class LocalServer {
 
 
   async core() {
-   
     this.app.use(require("body-parser").json());
     this.app.post("/", async (req: any, res: any) => {
       let x = req.body;
@@ -32,10 +32,11 @@ export class LocalServer {
       );
       res.redirect(307, this.forwardRequestUrl)
     });
-    this.app.listen(this.port, async () => {
+    this.app.listen(this.port, () => {
       cli.log(
         `local server listening at http://localhost:${this.port}`
       );
+          this.isSetup=true;
     });
   }
 

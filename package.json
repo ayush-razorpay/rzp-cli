@@ -65,6 +65,7 @@
     "jsonpath": "^1.1.0",
     "localtunnel": "^2.0.1",
     "log4js": "^6.3.0",
+    "node-banner": "^1.4.0",
     "razorpay": "^2.0.6",
     "tslib": "^1.14.1",
     "unirest": "^0.6.0",

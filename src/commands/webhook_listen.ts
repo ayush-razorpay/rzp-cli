@@ -4,7 +4,7 @@ import { RzpAuthConfigModel } from "../lib/RzpAuthConfigModel";
 import { RzpApiAuthUtil } from "../lib/RzpApiAuthUtil";
 import { LocalServer } from "../lib/LocalServer";
 import { TunnelingService } from "../lib/TunnelingService";
-
+const showBanner = require('node-banner');
 const validUrl = require("valid-url");
 
 export default class WebhookListen extends Command {
@@ -58,23 +58,33 @@ export default class WebhookListen extends Command {
             "\n to set new api keys run command - rzp-cli login"
         );
       });
+      
+
 
       //start a local server 
+      cli.action.start("Starting Connection bridge");
+      let tunnel = new TunnelingService(8654);
+      await tunnel.start();
+      cli.action.stop();
 
       let server = new LocalServer(8654,url);
-
       await server.core();
 
-      let tunnel = new TunnelingService(8654);
 
-      await tunnel.start();
+      var refreshIntervalId =  setInterval(function(){ 
+      if(server.isSetup && tunnel.isSetup){console.log(' ');
 
-    this.log(
-     JSON.stringify(this.apiKeys)
-    );
+      (async () => {
+        await showBanner('Razorpay', 'Webhook listen started. Forwaring requests to '+ url);
+    })();
+
+      clearInterval(refreshIntervalId);
+      }
+      
+  }, 2000);
   }
 
-
+ 
 
 
 
