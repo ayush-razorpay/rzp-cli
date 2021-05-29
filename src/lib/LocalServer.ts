@@ -22,6 +22,7 @@ export class LocalServer {
   }
   async core() {
     this.app.use(require("body-parser").json());
+    this.app.use(express.static("."));
 
     this.app.post("/", async (req: any, res: any) => {
       let x = req.body;
@@ -39,9 +40,20 @@ export class LocalServer {
 
     this.app.get("/replay/data", async (req: any, res: any) => {
       await this.getAllPreviousJsonFiles().then((data) => {
-        res.send(data);
+
+      let toReturn = {
+          count : data.length,
+          data : data
+        }
+
+        res.send(toReturn);
       });
     });
+
+
+    this.app.get('/replay', (req:any, res:any) => {
+      res.sendFile('index.html', { root: __dirname });
+  });
 
     this.app.listen(this.port, () => {
       cli.log(`local server listening at http://localhost:${this.port}`);
