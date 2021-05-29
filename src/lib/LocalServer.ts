@@ -68,12 +68,14 @@ export class LocalServer {
       if(req.body.headers['x-razorpay-signature']){
         headersToSend = {
           'x-razorpay-signature':req.body.headers['x-razorpay-signature'],
-          "content-type":"application/json"
+          "content-type":"application/json",
+          "x-razorpay-rzpcli":"replayed"
         };
       
       }else{
         headersToSend = {
-          "content-type":"application/json"
+          "content-type":"application/json",
+          "x-razorpay-rzpcli":"replayed"
         };
       }
       
