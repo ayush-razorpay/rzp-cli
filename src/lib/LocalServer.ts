@@ -6,6 +6,7 @@ const bodyparser = require("body-parser");
 var fsPath = require("fs-path");
 const fs = require("fs");
 const path = require("path");
+var unirest = require("unirest");
 
 export class LocalServer {
   public isSetup = false;
@@ -25,17 +26,71 @@ export class LocalServer {
     this.app.use(express.static("."));
 
     this.app.post("/", async (req: any, res: any) => {
-      let x = req.body;
+
+      console.log('headers  ',req.headers);
+      let x = {
+        headers : req.headers,
+        body :req.body,
+        id : jp.query(req.body, "$..id")[0],
+         event : req.body.event
+      
+      };
+
       let timeStamp = gettimeStamp();
       let eventid = jp.query(x, "$..id")[0];
-      let event = x.event;
+      let event = req.body.event;
       cli.info(
-        timeStamp + "-->  [ event : " + event + ", id : " + eventid + " ]"
+        timeStamp + " -->  [ event : " + event + ", id : " + eventid + " ]"
       );
 
-      let filename = x.event + "-" + eventid + ".json";
+      let filename =req.body.event + "-" + eventid + ".json";
       this.writeFile(x, filename);
       res.redirect(307, this.forwardRequestUrl);
+    });
+
+
+    this.app.post("/replay/retrigger", async (req: any, res: any) => {
+      let x = req.body.body;
+
+      console.log("----------",req.body.body);
+      
+      let timeStamp = gettimeStamp();
+      let eventid = req.body.id
+      let event = req.body.event;
+      cli.info(
+       "locally retriggered  " + timeStamp + " -->  [ event  : " + event + ", id : " + eventid + " ]"
+      );
+      
+
+      let toSendBody = JSON.parse(JSON.stringify(req.body.body));
+
+      let headersToSend;
+      if(req.body.headers['x-razorpay-signature']){
+        headersToSend = {
+          'x-razorpay-signature':req.body.headers['x-razorpay-signature'],
+          "content-type":"application/json"
+        };
+      
+      }else{
+        headersToSend = {
+          "content-type":"application/json"
+        };
+      }
+      
+
+    await unirest
+      .post(this.forwardRequestUrl)
+      .headers(headersToSend)
+      .send(JSON.stringify(toSendBody))
+      .end(function (response: any) {
+        if (response.error) {
+          res.send(response);
+          cli.error(response);
+        } else {
+          res.send(response);
+        }
+      });
+
     });
 
     this.app.get("/replay/data", async (req: any, res: any) => {

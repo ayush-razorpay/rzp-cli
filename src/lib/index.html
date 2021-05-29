@@ -1,168 +1,176 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
-      rel="stylesheet"
-    />
 
-    <link
-    href="https://cdn.jsdelivr.net/npm/jsoneditor@9.2.0/dist/jsoneditor.min.css"
-    rel="stylesheet"
-  />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css" rel="stylesheet" />
 
-  <body>
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-mdb-toggle="modal"
-      data-mdb-target="#staticBackdrop"
-    >
-      Launch static backdrop modal
-    </button>
+  <link href="https://cdn.jsdelivr.net/npm/jsoneditor@9.2.0/dist/jsoneditor.min.css" rel="stylesheet" />
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-mdb-backdrop="static"
-      data-mdb-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-mdb-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-      
-          <div class="modal-body" >    <code id="dat"></code></div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-mdb-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
+<body>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body"> <code id="dat"></code></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+            Close
+          </button>
+          <button type="button" onclick="retrigger()" class="btn btn-primary">Retrigger</button>
         </div>
       </div>
-  
-
     </div>
-    <div class="table-responsive">
-      <table id="table" class="table table-striped table-bordered table-sm">
-        <thead>
-          <tr class="table-dark">
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- MDB -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"
-    ></script>
-    <script
-    type="text/javascript"
-    src="  https://cdn.jsdelivr.net/npm/jsoneditor@9.4.1/dist/jsoneditor.min.js"
-  ></script>
 
-  
-    <script>
-      $(document).ready(function () {
-        console.log("ready!");
 
-        var settings = {
-          url: "/replay/data",
-          method: "GET",
-          timeout: 0,
-        };
+  </div>
+  <div class="container">
+  <div class="table-responsive">
+    <table id="table" class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">#</th>
+          <th scope="col">Event Type</th>
+          <th scope="col">Event Id</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <!-- MDB -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"></script>
+  <script type="text/javascript" src="  https://cdn.jsdelivr.net/npm/jsoneditor@9.4.1/dist/jsoneditor.min.js"></script>
 
-        $.ajax(settings).done(function (response) {
-          console.log(response);
 
-          response.data.forEach((element) => {
-            var table = document.getElementById("table");
-            var row = table.insertRow();
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            cell1.innerHTML = element.event;
-            cell2.innerHTML = element.payload.payment.entity.id;
+  <script>
 
-            let objJsonB64 =btoa(JSON.stringify(element))
-            let t =
-              '<button  type="button" class="btn btn-primary" data-mdb-toggle="modal" onClick=setModalText(&quot;' +
-              objJsonB64 +
-              '&quot;) data-mdb-target="#staticBackdrop" >my button </button>';
-            cell3.innerHTML = t;
-          });
 
-          // Add some text to the new cells:
+const container = document.getElementById("dat")
+    // const options = {}
+    // const editor = new JSONEditor(container, options)
 
-          // $scope.records = response.data;
+
+    $(document).ready(function () {
+      console.log("ready!");
+
+      var settings = {
+        url: "/replay/data",
+        method: "GET",
+        timeout: 0,
+      };
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+
+        response.data.forEach((element,index) => {
+          var table = document.getElementById("table");
+          var row = table.insertRow();
+          var cell0 = row.insertCell(0);
+          var cell1 = row.insertCell(1);
+          var cell2 = row.insertCell(2);
+          var cell3 = row.insertCell(3);
+          cell0.innerHTML=index+1;
+          cell1.innerHTML = element.event;
+          cell2.innerHTML = element.id;
+
+          let objJsonB64 = btoa(JSON.stringify(element))
+          let t =
+            '<button  type="button" class="btn btn-primary" data-mdb-toggle="modal" onClick=setModalText(&quot;' +
+            objJsonB64 +
+            '&quot;) data-mdb-target="#staticBackdrop" >view / edit & retrigger </button>';
+          cell3.innerHTML = t;
         });
       });
+    });
+   
+   
+    function setModalText(x) {
 
-      function setModalText(x) {
-        console.log("-------", x);
-        document.getElementById("dat").innerHTML = "";
-        const container = document.getElementById("dat")
-        const options = {}
-        const editor = new JSONEditor(container, options)
 
-      
+  
+      document.getElementById("dat").innerHTML = "";
+      const options = {}
+       editor = new JSONEditor(container, options)
+
+
+
+      // document.getElementById("dat").innerHTML = "";
+      var actual = JSON.parse(atob(x))
+
+      console.log("-------", actual);
+
+      if(actual.headers['x-razorpay-signature']){
+      actual.headers = {
+        'x-razorpay-signature':actual.headers['x-razorpay-signature']
+      };
     
-       // document.getElementById("dat").innerHTML = "";
-        var actual = JSON.parse(atob(x))
+    }
+      editor.set(actual)
+      //document.getElementById("dat").textContent = JSON.stringify(actual,null,"\t");
+    }
 
-        editor.set(actual)
-        //document.getElementById("dat").textContent = JSON.stringify(actual,null,"\t");
-      }
-    </script>
-  </body>
+   function retrigger() {
+    const updatedJson = editor.get();
+
+    console.log(updatedJson);
+    let temp = JSON.parse(JSON.stringify(updatedJson));
+//     var settings = {
+//    "url": "/replay/retrigger",
+//   //"url":"https://webhook.site/1e906a8e-7ed5-4a90-b67c-5e9725181350",
+//   "method": "POST",
+//   "headers": {
+//     "Content-Type": "application/json"
+//   },
+//   "timeout": 0,
+//   "data": JSON.stringify(temp),
+// };
+
+
+
+// $.ajax(settings).done(function (response) {
+//   console.log(response);
+// });
+const xhr = new XMLHttpRequest()
+xhr.withCredentials = true
+
+xhr.addEventListener('readystatechange', function() {
+  if (this.readyState === this.DONE) {
+
+  let temp =   JSON.parse(this.responseText);
+    if(temp.statusCode==200){
+      alert("success")
+    }else{
+      alert("failure")
+    }
+    console.log(this.responseText)
+  }
+})
+xhr.open('POST', '/replay/retrigger')
+xhr.setRequestHeader('content-type', 'application/json')
+xhr.send(JSON.stringify(temp))
+   }
+  </script>
+</body>
+
 </html>
