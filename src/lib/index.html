@@ -47,6 +47,8 @@
         <thead>
           <tr class="table-dark">
             <th scope="col">#</th>
+            <th scope="col">Timestamp</th>
+            <th scope="col">Created At</th>
             <th scope="col">Event Type</th>
             <th scope="col">Event Id</th>
             <th scope="col">Actions</th>
@@ -86,24 +88,32 @@
         response.data.forEach((element, index) => {
           var table = document.getElementById("table");
           var row = table.insertRow();
-          var cell0 = row.insertCell(0);
-          var cell1 = row.insertCell(1);
-          var cell2 = row.insertCell(2);
-          var cell3 = row.insertCell(3);
-          cell0.innerHTML = index + 1;
-          cell1.innerHTML = element.event;
-          cell2.innerHTML = element.id;
+      row.insertCell().innerHTML = index + 1;;
+      row.insertCell().innerHTML = formatTimestamp(new Date(element.timeStamp));
+      row.insertCell().innerHTML = formatTimestamp(new Date(element.created_at));
+      row.insertCell().innerHTML =  element.event;
+      row.insertCell().innerHTML =  element.id;      
 
           let objJsonB64 = btoa(JSON.stringify(element))
           let t =
             '<button  type="button" class="btn btn-primary" data-mdb-toggle="modal" onClick=setModalText(&quot;' +
             objJsonB64 +
             '&quot;) data-mdb-target="#staticBackdrop" >view / edit & retrigger </button>';
-          cell3.innerHTML = t;
+            row.insertCell().innerHTML = t;
         });
       });
     });
 
+    function formatTimestamp(t){
+      const date = ('0' + t.getDate()).slice(-2);
+const month = ('0' + (t.getMonth() + 1)).slice(-2);
+const year = t.getFullYear();
+const hours = ('0' + t.getHours()).slice(-2);
+const minutes = ('0' + t.getMinutes()).slice(-2);
+const seconds = ('0' + t.getSeconds()).slice(-2);
+const time = `${date}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+return time;
+    }
 
     function setModalText(x) {
 
@@ -112,10 +122,6 @@
       document.getElementById("dat").innerHTML = "";
       const options = {}
       editor = new JSONEditor(container, options)
-
-
-
-      // document.getElementById("dat").innerHTML = "";
       var actual = JSON.parse(atob(x))
 
       console.log("-------", actual);

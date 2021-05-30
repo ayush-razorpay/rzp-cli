@@ -25,92 +25,102 @@ export class LocalServer {
     this.app.use(require("body-parser").json());
     this.app.use(express.static("."));
 
+    let timeStamp = gettimeStamp();
     this.app.post("/", async (req: any, res: any) => {
-
-      console.log('headers  ',req.headers);
       let x = {
-        headers : req.headers,
-        body :req.body,
-        id : jp.query(req.body, "$..id")[0],
-         event : req.body.event
-      
+        headers: req.headers,
+        body: req.body,
+        id: jp.query(req.body, "$..id")[0],
+        event: req.body.event,
+        created_at:jp.query(req.body, "$..created_at")[0],
+        timeStamp : timeStamp
       };
 
-      let timeStamp = gettimeStamp();
+      
       let eventid = jp.query(x, "$..id")[0];
       let event = req.body.event;
       cli.info(
         timeStamp + " -->  [ event : " + event + ", id : " + eventid + " ]"
       );
 
-      let filename =req.body.event + "-" + eventid + ".json";
+      let filename = req.body.event + "-" + eventid + ".json";
       this.writeFile(x, filename);
-      res.redirect(307, this.forwardRequestUrl);
-    });
 
+      let headersToSend;
+
+      if (req.headers["x-razorpay-signature"]) {
+        headersToSend = {
+          "x-razorpay-signature": req.headers["x-razorpay-signature"],
+          "content-type": "application/json",
+          "x-razorpay-rzpcli": "forwarded",
+        };
+      } else {
+        headersToSend = {
+          "content-type": "application/json",
+          "x-razorpay-rzpcli": "forwarded",
+        };
+      }
+      let response = await LocalServer.post(
+        req.body,
+        headersToSend,
+        this.forwardRequestUrl
+      );
+      res.send(response);
+    });
 
     this.app.post("/replay/retrigger", async (req: any, res: any) => {
       let x = req.body.body;
 
-      console.log("----------",req.body.body);
-      
       let timeStamp = gettimeStamp();
-      let eventid = req.body.id
+      let eventid = req.body.id;
       let event = req.body.event;
       cli.info(
-       "locally retriggered  " + timeStamp + " -->  [ event  : " + event + ", id : " + eventid + " ]"
+        "locally retriggered  " +
+          timeStamp +
+          " -->  [ event  : " +
+          event +
+          ", id : " +
+          eventid +
+          " ]"
       );
-      
 
       let toSendBody = JSON.parse(JSON.stringify(req.body.body));
 
       let headersToSend;
-      if(req.body.headers['x-razorpay-signature']){
+      if (req.body.headers["x-razorpay-signature"]) {
         headersToSend = {
-          'x-razorpay-signature':req.body.headers['x-razorpay-signature'],
-          "content-type":"application/json",
-          "x-razorpay-rzpcli":"replayed"
+          "x-razorpay-signature": req.body.headers["x-razorpay-signature"],
+          "content-type": "application/json",
+          "x-razorpay-rzpcli": "replayed",
         };
-      
-      }else{
+      } else {
         headersToSend = {
-          "content-type":"application/json",
-          "x-razorpay-rzpcli":"replayed"
+          "content-type": "application/json",
+          "x-razorpay-rzpcli": "replayed",
         };
       }
-      
-
-    await unirest
-      .post(this.forwardRequestUrl)
-      .headers(headersToSend)
-      .send(JSON.stringify(toSendBody))
-      .end(function (response: any) {
-        if (response.error) {
-          res.send(response);
-          cli.error(response);
-        } else {
-          res.send(response);
-        }
-      });
-
+      let response = await LocalServer.post(
+        toSendBody,
+        headersToSend,
+        this.forwardRequestUrl
+      );
+      res.send(response);
     });
 
     this.app.get("/replay/data", async (req: any, res: any) => {
       await this.getAllPreviousJsonFiles().then((data) => {
-
-      let toReturn = {
-          count : data.length,
-          data : data
-        }
+        let toReturn = {
+          count: data.length,
+          data: data.reverse(),
+        };
 
         res.send(toReturn);
       });
     });
 
-
-    this.app.get('/replay', (req:any, res:any) => {
-      res.sendFile('index.html', { root: __dirname });
-  });
+    this.app.get("/replay", (req: any, res: any) => {
+      res.sendFile("index.html", { root: __dirname });
+    });
 
     this.app.listen(this.port, () => {
       cli.log(`local server listening at http://localhost:${this.port}`);
@@ -134,5 +144,22 @@ export class LocalServer {
       .readdirSync(this.dataFilePath + "/")
       .filter((name: any) => path.extname(name) === ".json")
       .map((name: any) => require(path.join(this.dataFilePath + "/", name)));
+  }
+
+  static async post(payload: string, headers: any, url: string) {
+    return new Promise((resolve, reject) => {
+      unirest
+        .post(url)
+        .headers(headers)
+        .send(JSON.stringify(payload))
+        .end(function (response: any) {
+          if (response.error) {
+            cli.warn(
+              "Api Request failed with error :" + JSON.stringify(response)
+            );
+          }
+          resolve(response);
+        });
+    });
   }
 }
