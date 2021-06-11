@@ -61,7 +61,7 @@ export default class WebhookListen extends Command {
 
     //start a local server
     cli.action.start("Starting Connection bridge");
-    let tunnel = new TunnelingService(8654);
+    let tunnel = new TunnelingService(8654,Buffer.from(this.apiKeys.key+':'+this.apiKeys.secret).toString('base64'));
     await tunnel.start();
     cli.action.stop();
 

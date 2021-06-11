@@ -5,9 +5,11 @@ import { CliApiRouterClient } from "./CliApiRouterClient";
 export class TunnelingService {
   port: number;
   isSetup = false;
+  auth : string;
 
-  constructor(port: number) {
+  constructor(port: number,auth:string) {
     this.port = port;
+    this.auth=auth;
   }
 
   start(): void {
@@ -18,7 +20,7 @@ export class TunnelingService {
       cli.log("Tunnel started at :" + tunnel.url);
       
       if(tunnel.url  != null ){
-    await CliApiRouterClient.registerTempUrl(tunnel.url);
+    await CliApiRouterClient.registerTempUrl(tunnel.url,this.auth);
       this.isSetup=true;
       }
       else

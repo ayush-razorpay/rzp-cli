@@ -28,26 +28,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`rzp-cli Webhook_listen1`](#rzp-cli-webhook_listen1)
 * [`rzp-cli help [COMMAND]`](#rzp-cli-help-command)
 * [`rzp-cli login`](#rzp-cli-login)
-* [`rzp-cli replay_webhook_events [QUERY]`](#rzp-cli-replay_webhook_events-query)
-* [`rzp-cli webhook_listen [FILE]`](#rzp-cli-webhook_listen-file)
-
-## `rzp-cli Webhook_listen1`
-
-listen to webhook post calls
-
-```
-USAGE
-  $ rzp-cli Webhook_listen1
-
-OPTIONS
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/Webhook_listen1.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/Webhook_listen1.ts)_
+* [`rzp-cli webhook_listen`](#rzp-cli-webhook_listen)
 
 ## `rzp-cli help [COMMAND]`
 
@@ -80,34 +63,17 @@ OPTIONS
 
 _See code: [src/commands/login.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/login.ts)_
 
-## `rzp-cli replay_webhook_events [QUERY]`
+## `rzp-cli webhook_listen`
 
 describe the command here
 
 ```
 USAGE
-  $ rzp-cli replay_webhook_events [QUERY]
+  $ rzp-cli webhook_listen
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/replay_webhook_events.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/replay_webhook_events.ts)_
-
-## `rzp-cli webhook_listen [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ rzp-cli webhook_listen [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help     show CLI help
+  -u, --url=url  (required) App url for Webhook http request forwarding
 ```
 
 _See code: [src/commands/webhook_listen.ts](https://github.com/ayush-razorpay/rzp-cli/blob/v0.0.0/src/commands/webhook_listen.ts)_
